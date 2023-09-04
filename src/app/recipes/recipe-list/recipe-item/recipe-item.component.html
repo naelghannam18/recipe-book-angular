@@ -1,8 +1,9 @@
 <a
-    href="#"
+    role="button"
     class="list-group-item clearfix d-flex border align-items-center p-1 mb-1"
     id="list-item-hover"
-    (click)="onSelected()"
+    [routerLink]="[recipe.id]"
+    routerLinkActive="recipe-item-active"
 >
     <div class="list-group">
         <h3 class="list-group-item-heading">

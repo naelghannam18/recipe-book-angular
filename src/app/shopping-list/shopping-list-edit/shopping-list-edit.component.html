@@ -1,37 +1,53 @@
-<div class="row">
-    <div class="col-xs-12">
-        <form>
+<form [formGroup]="addIngredientsForm" (ngSubmit)="onIngredientSubmit()">
+    <div class="row">
+        <div class="col-xs-12">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
                     <input
-                    type="text"
-                    class="form-control" 
-                    id="name" 
-                    #nameInput
+                        type="text"
+                        class="form-control"
+                        formControlName="ingName"
                     />
+                    <span
+                        class="help-box"
+                        *ngIf="
+                            !addIngredientsForm.get('ingName')?.valid &&
+                            addIngredientsForm.get('ingName')?.touched
+                        "
+                    >
+                        Please Enter a valid Ingredient name
+                    </span>
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
-                    <input 
-                    type="number" 
-                    id="amount" 
-                    class="form-control"
-                    #amountInput
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="ingAmount"
                     />
+                    <span
+                        class="help-box"
+                        *ngIf="
+                            !addIngredientsForm.get('ingAmount')?.valid &&
+                            addIngredientsForm.get('ingAmount')?.touched
+                        "
+                    >
+                        Please Enter a valid Ingredient amount
+                    </span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 mt-2">
-                    <button class="btn btn-success me-1" type="submit" (click)="onAddItem()">
-                        Add
+                    <button [disabled]="!addIngredientsForm.valid" class="btn btn-success me-1" type="submit">
+                        {{editMode ? 'Update' : 'Add'}}
                     </button>
-                    <button class="btn btn-danger me-1" type="button">
+                    <button *ngIf="this.editMode" class="btn btn-danger me-1" type="button" (click)="onDeleteIngredient()">
                         Delete
                     </button>
-                    <button class="btn btn-primary" type="button">Clear</button>
+                    <button class="btn btn-primary" type="button" (click)="onClearInputs()">Clear</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>

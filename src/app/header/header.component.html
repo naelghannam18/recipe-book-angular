@@ -15,8 +15,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
-        <a class="nav-link" [routerLink]="'recipes'">Recipes</a>
-        <a class="nav-link" [routerLink]="'shopping-list'" >Shopping List</a>
+        <li><a class="nav-link header-link" routerLinkActive="header-link-active" routerLink="recipes">Recipes</a></li>
+        <li><a class="nav-link header-link" routerLinkActive="header-link-active" routerLink="shopping-list" >Shopping List</a></li>
       </ul>
       <ul class="navbar-nav ms-auto me-5">
         <div ngbDropdown class="dropdown dropstart">
@@ -30,8 +30,8 @@
                 Manage
             </a>
             <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
-                <li><a ngbDropdownItem href="#">Save Data</a></li>
-                <li><a ngbDropdownItem href="#">Fetch Data</a></li>
+                <li><a ngbDropdownItem role="button">Save Data</a></li>
+                <li><a ngbDropdownItem role="button">Fetch Data</a></li>
             </ul>
         </div>
       </ul>
