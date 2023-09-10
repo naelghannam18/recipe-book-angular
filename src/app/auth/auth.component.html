@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-md-offset-3 form-container">
+            <!-- <div class="alert alert-danger" *ngIf="error">
+                {{error}}
+            </div> -->
+            <app-alert [message]="error" *ngIf="error" (close)="onCloseError()"></app-alert>
+            <form
+                class="auth-form"
+                [formGroup]="loginForm"
+                (submit)="onSubmit()"
+                *ngIf="!isLoading ;else spinner"
+            >
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        formControlName="email"
+                    />
+                    <span
+                        *ngIf="
+                            !loginForm.get('email')?.valid &&
+                            loginForm.get('email')?.touched
+                        "
+                        class="help-box"
+                        >Please Enter a valid Email</span
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        formControlName="password"
+                    />
+                    <span
+                        *ngIf="
+                            !loginForm.get('password')?.valid &&
+                            loginForm.get('password')?.touched
+                        "
+                        class="help-box"
+                        >Please Enter a valid Password</span
+                    >
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 mt-3">
+                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid && !loginMode">
+                            {{ this.loginMode ? "Login" : "Signup" }}
+                        </button>
+                        |
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            (click)="onSwitchMode()"
+                        >
+                            Switch To {{ loginMode ? "Signup" : "Login" }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <ng-template #spinner >
+                <div style="text-align: center;">
+                    <app-loading-spinner></app-loading-spinner>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

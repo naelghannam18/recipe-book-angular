@@ -24,7 +24,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     .subscribe((ings: Ingredient[]) =>
     {
       this.ingredients = ings;
-      console.log(this.ingredients)
     })
   }
 

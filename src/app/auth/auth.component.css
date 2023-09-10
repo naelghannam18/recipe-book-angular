@@ -1,0 +1,13 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+.help-box {
+    color: red;
+}
+
+.form-container {
+    margin: auto;
+    margin-top: 5%;
+    max-width: 40%;
+}
